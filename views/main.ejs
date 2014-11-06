@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html data-ng-app="myApp">
+<head>
+    <title>Ping Pong</title>
+
+    <link type="text/css" rel="stylesheet" href="css/stylesheet.css" />
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans Condensed:300italic,300,700" rel="stylesheet" type="text/css">
+    <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+
+    <!-- Vendor Libs: jQuery only used for Bootstrap functionality -->
+    <script src="/lib/angular-1.2.24/angular.js"></script>
+    <script src="/lib/angular-1.2.24/angular-route.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+
+    <!-- UI Libs -->
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- App libs -->
+    <script src="/app/app.js"></script>
+
+
+
+    <!-- App.Controller libs -->
+    <script src="/app/controllers/controllers.js"></script>
+
+    <script src="/app/services/toolService.js"></script>
+
+</head>
+
+
+<body data-ng-controller="ToolController" >
+<header class="homebanner">
+
+    <h1 class="homebannertext">
+        <a href="http://tutorialzine.com/2014/03/nodejs-private-webchat/" id="logo">Tutorial<span>zine</span></a>
+    </h1>
+
+</header>
+
+<section>
+
+    <div class="homesection">
+
+        <a title="Create" href="/create" id="create">
+            <div id="createbutton">
+                <div id="big">Create</div>
+                <div id="little">Private Room!</div>
+            </div>
+        </a>
+
+    </div>
+
+</section>
+
+</body>
+
+</html>

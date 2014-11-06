@@ -1,0 +1,197 @@
+/* Space out content a bit */
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+body {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family:"Nanum Gothic", "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 700;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+/* Custom page header */
+.header {
+    border-bottom: 1px solid #e5e5e5;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+    padding-bottom: 19px;
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 40px;
+}
+
+/* Custom page footer */
+.footer {
+    padding-top: 19px;
+    color: #777;
+    border-top: 1px solid #e5e5e5;
+}
+
+/* Customize container */
+@media (min-width: 768px) {
+    .container {
+        max-width: 1024px;
+        height:100%;
+    }
+}
+.container-narrow > hr {
+    margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+    overflow: auto;
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5;
+}
+.jumbotron .btn {
+    padding: 14px 24px;
+    font-size: 21px;
+}
+
+/* Supporting marketing content */
+.marketing {
+    margin: 40px 0;
+}
+.marketing p + h4 {
+    margin-top: 28px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+    /* Remove the padding we set earlier */
+    .header,
+    .marketing,
+    .footer {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    /* Space out the masthead */
+    .header {
+        margin-bottom: 30px;
+    }
+    /* Remove the bottom border on the jumbotron for visual effect */
+    .jumbotron {
+        border-bottom: 0;
+    }
+}
+.ajax_loader {background: url("/lib/loader/spinner_squares_circle.gif") no-repeat center center transparent;width:100%;height:100%;}
+.blue-loader .ajax_loader {background: url("/lib/loader/ajax-loader_blue.gif") no-repeat center center transparent;}
+
+
+
+.vm-box{
+    border : none;
+    box-shadow: 0px 0px 10px #888888;
+}
+.vm-box.actbox{
+    height : auto;
+}
+.controller {
+
+
+}
+.vm-box.inactbox{
+    height: 41px;
+    overflow: hidden;
+}
+.vm-info{
+    padding: 10px;
+}
+.slider.slider-horizontal {
+    width: 100%;
+}
+.modal-content{
+    border-radius: 3px;
+}
+.modal-content  h3,h4, h5 {
+
+}
+.modal-content  h4{
+
+}
+.modal-content  h5{
+    color : #c92f34;
+
+}
+.modal-content .modal-header{
+    border :none;
+}
+.modal-content .modal-footer .btn{
+    border-radius: 3px;
+}
+
+#new-vm-dialog .modal-content{
+    padding:5px;
+}
+.tooltip {
+    display: block;
+    position: absolute;
+    border: 1px solid #D9D9D9;
+    font: 400 12px/12px Arial;
+    border-radius: 3px;
+    background: #fff;
+    top: -43px;
+    padding: 5px;
+    left: -9px;
+    text-align: center;
+    width: 50px;
+}
+.tooltip strong {
+    display: block;
+    padding: 2px;
+}
+.tool {
+    width: 100%;
+    padding: 5px 0px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: normal;
+}
+.example{
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    position: relative;
+    padding: 50px 30px 20px;
+    margin: 20px 0;
+    overflow: hidden;
+}
+.noUi-horizontal .noUi-handle {
+    width:60px;
+    margin-left: -13px;
+}
+
+.noUi-handle:before,
+.noUi-handle:after {
+    display:none;
+}
+.noUi-origin {
+    margin-right:-15px;
+}
+.noUi-connect {
+    background: #428bca;
+}
+.slider-x{
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-top: 10px;
+}
+.context-menu-item{
+    padding: 7px;
+}
