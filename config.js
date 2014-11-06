@@ -16,5 +16,5 @@ module.exports = function(app, io){
 
 	// Make the files in the public folder available to the world
 	app.use(express.static(__dirname + '/public'));
-//ssss
+
 };
