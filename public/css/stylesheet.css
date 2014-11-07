@@ -204,6 +204,20 @@ body {
 	margin-bottom:40px;
 }
 
+#room {
+	float:left;
+	padding-left: 10px;
+	width: 200px;
+	height: 30px;
+	border-radius: 3px;
+	box-shadow:0px 3px 3px #e3e4e6;
+	background-color: #f0f1f3;
+	border: 1px solid #d1d1d1;
+	border-radius: 3px;
+	box-shadow:0px 3px 3px #e3e4e6;
+	margin-bottom:40px;
+}
+
 #yourEnter {
 	float:left;
 	width: 110px;

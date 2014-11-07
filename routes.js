@@ -28,7 +28,7 @@ app.set('view engine', 'ejs');
 // the app and io instances from the app.js file:
 
 module.exports = function(app,io){
-	app.get('/create', function(req,res){
+/*	app.get('/create', function(req,res){
 
 		// Generate unique id for the room
 		var id = Math.round((Math.random() * 1000000));
@@ -164,7 +164,7 @@ function findClientsSocket(io,roomId, namespace) {
 			}
 		}
 	}
-	return res;
+	return res;*/
 }
 
 
