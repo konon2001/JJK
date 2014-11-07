@@ -43,10 +43,14 @@ $(function(){
 		leftImage = $("#leftImage"),
 		noMessagesImage = $("#noMessagesImage");
 
+	$('#yourEnter').on('click', function(){
+		var room = $('#room').val();
+
+		socket.emit('addroom', room);
+	});
 
 	// on connection to server get the id of person's room
 	socket.on('connect', function(){
-
 		socket.emit('load', id);
 	});
 
@@ -75,16 +79,10 @@ $(function(){
 
 				email = yourEmail.val();
 
-				if(!isValid(email)) {
-					alert("Please enter a valid email!");
-				}
-				else {
-
-					showMessage("inviteSomebody");
+				showMessage("inviteSomebody");
 
 					// call the server-side function 'login' and send user's parameters
 					socket.emit('login', {user: name, avatar: email, id: id});
-				}
 
 			});
 		}
@@ -110,12 +108,7 @@ $(function(){
 				}
 				email = hisEmail.val();
 
-				if(!isValid(email)){
-					alert("Wrong e-mail format!");
-				}
-				else {
-					socket.emit('login', {user: name, avatar: email, id: id});
-				}
+				socket.emit('login', {user: name, avatar: email, id: id});
 
 			});
 		}

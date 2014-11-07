@@ -11,10 +11,12 @@
 <head>
 
 	<title>Private chat room | Tutorialzine Demo</title>
-
+	<script src = "http://code.jquery.com/jquery-1.7.1.js"></script>
 	<link type="text/css" rel="stylesheet" href="../css/stylesheet.css" />
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans Condensed:300italic,300,700" rel="stylesheet" type="text/css">
 
+	<script>
+	</script>
 
 </head>
 
@@ -35,16 +37,15 @@
 
 		<div class="connected">
 
-			<img src="../img/unnamed.jpg" id="creatorImage" />
-
 			<div class="infoConnected">
-				<h2>Who are you?</h2>
+				<h2>Make a Room!!</h2>
 				<br/>
 
 				<form class="loginForm">
-					<input type="text" id="yourName" placeholder="Your nick name" /><br/>
-					<input type="text" id="yourEmail" placeholder="Your email address" /><br/>
-					<input type="submit" id="yourEnter" value="ENTER" />
+					<input type="hidden" id="yourName" value=<%=username%> /><br/>
+					<input type="text" id="room" placeholder="Input the room name" /><br/>
+					<input type="submit" id="yourEnter" value="ENTER" /><br/>
+					<input type="hidden" id="yourEmail" value="123"/><br/>
 				</form>
 
 			</div>
