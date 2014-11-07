@@ -3,20 +3,31 @@
 // and listens for socket.io messages.
 
 // Use the gravatar module, to turn email addresses into avatar images:
+var express = require('express'),
+	app = module.exports = express(),
+	mongoose = require('mongoose'),
+	mongoStore = require('connect-mongodb'),
+	socket = require('socket.io'),
+	db,
+	io,
+	server,
+	Document,
+	User,
+	Whales,
+	Pages,
+	Settings = { development: {}, test: {}, production: {} };
 
+var http = require('http');
+var path = require('path');
 var gravatar = require('gravatar');
+
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
 
 // Export a function, so that we can pass 
 // the app and io instances from the app.js file:
 
 module.exports = function(app,io){
-
-	app.get('/', function(req, res){
-
-		// Render views/home.html
-		res.render('home');
-	});
-
 	app.get('/create', function(req,res){
 
 		// Generate unique id for the room
@@ -29,7 +40,7 @@ module.exports = function(app,io){
 	app.get('/chat/:id', function(req,res){
 
 		// Render the chant.html view
-		res.render('chat');
+		res.render('chat.ejs');
 	});
 
 	// Initialize a new socket.io application, named 'chat'

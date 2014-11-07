@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html data-ng-app="myApp">
 <head>
-    <title>Ping Pong</title>
+    <script src = "http://code.jquery.com/jquery-1.7.1.js"></script>
+    <script src = "/socket.io/socket.io.js"></script>
+    <title>Customer Manager</title>
 
     <link type="text/css" rel="stylesheet" href="css/stylesheet.css" />
     <link href="http://fonts.googleapis.com/css?family=Open+Sans Condensed:300italic,300,700" rel="stylesheet" type="text/css">
     <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
-
+    <link href="/public/css/landing-page.css" rel="stylesheet">
 
     <!-- Vendor Libs: jQuery only used for Bootstrap functionality -->
     <script src="/lib/angular-1.2.24/angular.js"></script>
@@ -30,29 +32,35 @@
 
 
 <body data-ng-controller="ToolController" >
-<header class="homebanner">
+<div ng-view></div>
+<div class="intro-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12" >
+                <div  id="intro-box" class="intro-message">
+                    <h3><%=username%>님 접속중...</h3>
+                    <br><br><br><br><br>
 
-    <h1 class="homebannertext">
-        <a href="http://tutorialzine.com/2014/03/nodejs-private-webchat/" id="logo">Tutorial<span>zine</span></a>
-    </h1>
+                    <ul class="list-inline intro-social-buttons">
 
-</header>
-
-<section>
-
-    <div class="homesection">
-
-        <a title="Create" href="/create" id="create">
-            <div id="createbutton">
-                <div id="big">Create</div>
-                <div id="little">Private Room!</div>
+                        <li>
+                            <a href="/create" id="btn-sign" class="btn btn-default btn-lg"><span class="network-name"><i class="glyphicon glyphicon-plus-sign"></i> Create Room</span></a>
+                        </li>
+                        <li>
+                            <!--<i class="fa fa-twitter fa-fw"></i>-->
+                            <a href="#" id="btn-more" class="btn btn-default btn-lg"><span class="network-name"><i class="glyphicon glyphicon-log-in"></i> Join</span></a>
+                        </li>
+                        <li>
+                            <!--<i class="fa fa-twitter fa-fw"></i>-->
+                            <a href="/tutorial" id="btn-more" class="btn btn-default btn-lg"><span class="network-name"><i class="glyphicon glyphicon-question-sign"></i> Tutorial</span></a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </a>
 
+        </div>
     </div>
-
-</section>
-
+</div>
 </body>
 
 </html>

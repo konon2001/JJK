@@ -85,6 +85,10 @@ app.post('/users/signin', sign.in );
 app.get('/users/:username', sign.username );
 app.get('/main*', loadUser, main.main );
 
+app.get('/tutorial', function(req,res){
+    res.render('pingpong.ejs');
+});
+
 function loadUser(req, res, next) {
     if (req.session.username) {
         User.findById(req.session.username, function(user) {

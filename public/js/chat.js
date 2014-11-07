@@ -67,7 +67,7 @@ $(function(){
 				e.preventDefault();
 
 				name = $.trim(yourName.val());
-				
+
 				if(name.length < 1){
 					alert("Please enter a nick name longer than 1 character!");
 					return;
@@ -85,7 +85,7 @@ $(function(){
 					// call the server-side function 'login' and send user's parameters
 					socket.emit('login', {user: name, avatar: email, id: id});
 				}
-			
+
 			});
 		}
 
