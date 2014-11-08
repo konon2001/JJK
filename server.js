@@ -203,6 +203,7 @@ var chat = io.of('/socket').on('connection', function (socket) {
         else if(room.length >= 2) {
 
             chat.emit('tooMany', {boolean: true});
+
         }
     });
 
