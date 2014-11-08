@@ -151,6 +151,10 @@ app.get('/create', function(req,res){
     res.redirect('/chat/'+id);
 });
 
+app.get('/test', function(req,res){
+    console.log("test");
+});
+
 app.get('/chat/:id', function(req,res){
 
     // Render the chant.html view
