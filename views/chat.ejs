@@ -10,7 +10,7 @@
 
 <head>
 
-	<title>Private chat room | Tutorialzine Demo</title>
+	<title>Private chat room</title>
 	<script src = "http://code.jquery.com/jquery-1.7.1.js"></script>
 	<link type="text/css" rel="stylesheet" href="../css/stylesheet.css" />
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans Condensed:300italic,300,700" rel="stylesheet" type="text/css">
@@ -25,7 +25,7 @@
 	<header class="banner">
 
 		<h1 class="bannertext">
-			<a href="http://tutorialzine.com/2014/03/nodejs-private-webchat/" id="logo">Tutorial<span>zine</span>: NODE.JS CHAT TUTORIAL</a>
+			<a href="/join" id="logo">Back to the list</a>
 		</h1>
 
 	</header>
@@ -57,13 +57,13 @@
 			<img src="../img/unnamed.jpg" id="ownerImage" />
 
 			<div class="infoInside">
-				<h2>Chat with <span class="nickname-chat"></span></h2>
+				<h2>Will you Chat with <span class="nickname-chat"></span> ?</h2>
 				<br/>
 
 				<form class="loginForm">
 					<input type="hidden" id="hisName" value=<%=username%> /><br/>
-					<input type="submit" id="hisEnter" value="ENTER" /><br/>
-					<input type="hidden" id="hisEmail" value="321"/><br/>
+					<input type="submit" id="hisEnter" value="YES" />
+					<a href="/join"><input type="button" id="hisEnter" value="NO"/></a><br/>
 
 				</form>
 
@@ -100,7 +100,7 @@
 			<img src="../img/unnamed.jpg" id="noMessagesImage" />
 
 			<div class="info">
-				<h2>You are chatting with <span class="nickname-chat"></span>.</h2>
+				<h2>You are chatting with <span class="nickname-chat"/>.</h2>
 				<h5>Send them a message from the form below!</h5>
 			</div>
 
@@ -121,7 +121,8 @@
 		<form id="chatform">
 
 			<textarea id="message" placeholder="Write something.."></textarea>
-			<input type="submit" id="submit" value="SEND"/>
+			<input type="submit" id="submit" value="SEND">
+			<input type="button" id="startGame" value="START GAME"/>
 
 		</form>
 
