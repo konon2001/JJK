@@ -61,9 +61,10 @@
 				<br/>
 
 				<form class="loginForm">
-					<input type="text" id="hisName" placeholder="Your nick name" /><br/>
-					<input type="text" id="hisEmail" placeholder="Your email address" /><br/>
-					<input type="submit" id="hisEnter" value="CHAT" />
+					<input type="hidden" id="hisName" value=<%=username%> /><br/>
+					<input type="submit" id="hisEnter" value="ENTER" /><br/>
+					<input type="hidden" id="hisEmail" value="321"/><br/>
+
 				</form>
 
 			</div>
@@ -72,12 +73,7 @@
 
 		<div class="invite-textfield">
 
-			<h2>Oops, there are no other people in this chat!</h2>
-			<h5>Invite a friend by sending them this URL</h5>
-
-			<div class="link">
-				<a title="Invite a friend" href="" id="link"></a>
-			</div>
+			<h1>Wait for another friend</h1>
 
 		</div>
 
