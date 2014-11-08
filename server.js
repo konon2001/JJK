@@ -109,14 +109,26 @@ function loadUser(req, res, next) {
 }
 
 app.get('/', function(req, res) {
-    res.render( 'index.ejs',
-        {
-            title:'Ping-Pong',
-            head1 :'On-line PingPong',
-            head2 : 'head2',
-            tail : '2014 11 01'
-        } );
+        res.render('index.ejs',
+            {
+                title: 'Ping-Pong',
+                head1: 'On-line PingPong',
+                head2: 'head2',
+                tail: '2014 11 01',
+                username: req.session.username
+            });
 });
+
+app.get('/logout', function(req, res) {
+        res.render('index.ejs',
+            {
+                title: 'Ping-Pong',
+                head1: 'On-line PingPong',
+                head2: 'head2',
+                tail: '2014 11 01',
+                username: 'undefined'
+            })
+})
 
 app.delete('/sessions', loadUser, function(req, res) {
     if (req.session) {
