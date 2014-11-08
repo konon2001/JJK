@@ -13,8 +13,8 @@ var express = require('express'),
     User,
     Whales,
     Pages,
+    socket2,
     Settings = { development: {}, test: {}, production: {} };
-
 
 var http = require('http');
 var path = require('path');
@@ -33,7 +33,7 @@ function mongoStoreConnectionArgs() {
 var MAIN_PORT = 8080;
 var DB_PORT = 27017;
 var MAIN_DB = 'mongodb://localhost:'+DB_PORT+'/pingpong';
-
+var roomArray = [];
 
 app.set('port', MAIN_PORT);
 app.set('db-uri', MAIN_DB);
@@ -147,17 +147,23 @@ app.get('/chat/:id', function(req,res){
     );
 });
 
+app.get('/join', function(req,res){
+    res.render('join.ejs',
+        {
+            username : req.session.username
+        }
+    );
+});
+
 var chat = io.of('/socket').on('connection', function (socket) {
 
     // When the client emits the 'load' event, reply with the
     // number of people in this chat room
 
     socket.on('addroom',function(data){
-        var roomlist = [];
-
-        roomlist.push(data);
-
-        console.log(roomlist);
+        /*var roomlist = data;
+        socket.broadcast.emit('roomlist', roomlist);
+        console.log(roomlist);*/
     });
 
     socket.on('load',function(data){
@@ -186,6 +192,10 @@ var chat = io.of('/socket').on('connection', function (socket) {
     // When the client emits 'login', save his name and avatar,
     // and add them to the room
     socket.on('login', function(data) {
+
+        roomArray.push(data);
+
+        console.log(roomArray);
 
         var room = findClientsSocket(io, data.id, '/socket');
         // Only two people per room are allowed
