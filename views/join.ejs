@@ -21,15 +21,6 @@
     <!-- App libs -->
     <script src="/app/app.js"></script>
 
-    <script>
-        var socket = io.connect('/socket');
-
-        socket.on('roomID', function (data){
-            alert("kk")
-        });
-
-    </script>
-
     <!-- App.Controller libs -->
     <script src="/app/controllers/controllers.js"></script>
 
@@ -51,7 +42,7 @@
                     <ul class="list-inline intro-social-buttons">
 
                         <li>
-                            <a href="/create" id="btn-sign" class="btn btn-default btn-lg"><span class="network-name"><i class="glyphicon glyphicon-plus-sign"></i> Create Room</span></a>
+                            <a href="/chat/<%=roomID[0]%>" id="btn-sign" class="btn btn-default btn-lg"><span class="network-name"><i class="glyphicon glyphicon-plus-sign"></i> <%=roomArray%></span></a>
                         </li>
                         <li>
                             <!--<i class="fa fa-twitter fa-fw"></i>-->
@@ -60,10 +51,6 @@
                         <li>
                             <!--<i class="fa fa-twitter fa-fw"></i>-->
                             <a href="/tutorial" id="btn-more" class="btn btn-default btn-lg"><span class="network-name"><i class="glyphicon glyphicon-question-sign"></i> Tutorial</span></a>
-                        </li>
-                        <li>
-                            <!--<i class="fa fa-twitter fa-fw"></i>-->
-                            <a href="/tutorial" id="btn-more" class="btn btn-default btn-lg"><span class="network-name"><i class="glyphicon glyphicon-home"></i> Log out</span></a>
                         </li>
                     </ul>
                 </div>

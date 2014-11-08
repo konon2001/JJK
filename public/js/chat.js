@@ -7,11 +7,13 @@ $(function(){
 
 	// connect to the socket
 	var socket = io.connect('/socket');
+	var socket2 = io.connect("http://localhost:8080")
 
 	// variables which hold the data for each person
 	var name = "",
 		email = "",
 		img = "",
+		room = "",
 		friend = "";
 
 	// cache some jQuery objects
@@ -31,6 +33,7 @@ $(function(){
 		loginForm = $(".loginForm"),
 		yourName = $("#yourName"),
 		yourEmail = $("#yourEmail"),
+		yourRoom = $("#room"),
 		hisName = $("#hisName"),
 		hisEmail = $("#hisEmail"),
 		chatForm = $("#chatform"),
@@ -44,7 +47,7 @@ $(function(){
 		noMessagesImage = $("#noMessagesImage");
 
 	$('#yourEnter').on('click', function(){
-		var room = $('#room').val();
+		room = yourRoom.val();
 
 		socket.emit('addroom', room);
 	});
@@ -73,17 +76,17 @@ $(function(){
 				name = $.trim(yourName.val());
 
 				if(name.length < 1){
-					alert("Please enter a nick name longer than 1 character!");
+					alert("Please enter room name longer than 1 character!");
 					return;
 				}
 
 				email = yourEmail.val();
+				room = yourRoom.val();
 
 				showMessage("inviteSomebody");
 
 					// call the server-side function 'login' and send user's parameters
-					socket.emit('login', {user: name, avatar: email, id: id});
-
+					socket.emit('login', {user: name, room: room, avatar: email, id: id});
 			});
 		}
 
@@ -109,6 +112,8 @@ $(function(){
 				email = hisEmail.val();
 
 				socket.emit('login', {user: name, avatar: email, id: id});
+
+				socket2.emit('login', {user: name, avatar: email, id: id});
 
 			});
 		}

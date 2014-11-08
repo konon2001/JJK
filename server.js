@@ -34,6 +34,8 @@ var MAIN_PORT = 8080;
 var DB_PORT = 27017;
 var MAIN_DB = 'mongodb://localhost:'+DB_PORT+'/pingpong';
 var roomArray = [];
+var roomID = [];
+var roomUser = [];
 
 app.set('port', MAIN_PORT);
 app.set('db-uri', MAIN_DB);
@@ -162,7 +164,10 @@ app.get('/chat/:id', function(req,res){
 app.get('/join', function(req,res){
     res.render('join.ejs',
         {
-            username : req.session.username
+            username : req.session.username, //접속한 내아이디
+            roomArray: roomArray, // 방이름
+            roomID: roomID,  // 룸포트
+            roomUser: roomUser // 방만든이
         }
     );
 });
@@ -205,9 +210,9 @@ var chat = io.of('/socket').on('connection', function (socket) {
     // and add them to the room
     socket.on('login', function(data) {
 
-        roomArray.push(data);
-
-        console.log(roomArray);
+        roomArray.push(data.room);
+        roomID.push(data.id);
+        roomUser.push(data.user);
 
         var room = findClientsSocket(io, data.id, '/socket');
         // Only two people per room are allowed
