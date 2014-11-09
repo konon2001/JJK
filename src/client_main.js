@@ -43,10 +43,9 @@
             },
             
             paddle: {
-                model: "models/paddle.js"j
+                model: "models/paddle.js"
             },
-
-
+            
             audio: {
                 ball: ["audio/ball1.ogg", "audio/ball2.ogg"],
                 paddle: ["audio/paddle1.ogg", "audio/paddle2.ogg"]

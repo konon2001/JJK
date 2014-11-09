@@ -37,7 +37,13 @@ PingPong.AI.prototype = {
         var ballPos = this.ball.position
         var paddleSize = this.paddleSize;
         var tableSize = this.tableSize;
-        
+
+        socket.on( 'pos', function(data){
+            //myPos.x = data.x;
+            //console.log('myPos', myPos.x);
+            //me.ai.playInput( data.x, data.y );
+        });
+
         if (this.simulation.getLinearVelocity().z > 0){
             //ball going against opponent
             targetPos.set(0, tableSize.height, -tableSize.depth * 0.5);
@@ -75,15 +81,17 @@ PingPong.AI.prototype = {
                 
                 
                 this.simulation.hitBall(dir, 0.025);
+
             }
         }
-        
-        var diffY = myPos.y - Math.max(targetPos.y, tableSize.height * 0.8); 
+
+        var diffY = myPos.y - Math.max(targetPos.y, tableSize.height * 0.8);
         //myPos.y+= Math.min(Math.abs(diffY), paddleSize.height* 0.1) * (diffY ? -1 : 1);
-        
+
         var diffX = Math.abs(targetPos.x - myPos.x);
         var speedX = tableSize.width* 0.05 * this.speed;
-        myPos.x+= Math.min(diffX, speedX) * (myPos.x > targetPos.x ? -1 : 1);
+        myPos.x += Math.min(diffX, speedX) * (myPos.x > targetPos.x ? -1 : 1);
+        console.log('myPos after', myPos.x);
     }
 }
     

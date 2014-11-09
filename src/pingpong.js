@@ -239,7 +239,7 @@ PingPong.GameScene.prototype = {
             var x = ev.targetTouches ? ev.targetTouches[0].clientX : ev.clientX;
             var y = ev.targetTouches ? ev.targetTouches[0].clientY : ev.clientY;
 
-            socket.emit( 'game', { x : x , y : y } );
+            //socket.emit( 'game', { x : x , y : y } );
             me.processInput(x,y);
         }
 
@@ -258,7 +258,7 @@ PingPong.GameScene.prototype = {
     serve: function() {
         state = STATES.PLAYING;
         ball.position.set(paddle.position.x, paddle.position.y + paddleSize.height, paddle.position.z);
-        
+
         var dir = new THREE.Vector3(0,-0.5,-1);
         this.simulation.hitBall(dir, 0.02);
         
@@ -322,14 +322,12 @@ PingPong.GameScene.prototype = {
             intersect = paddle.position.clone();
         }
         intersect.z = Math.max(intersect.z, tableSize.depth * 0.05);
-        
-        //set paddle position  
-        paddle.position.x = intersect.x;
+
+        //set paddle position
+        paddle.position.x = (intersect.x)/1.1;
         paddle.position.z = intersect.z;
         paddle.position.y = tableSize.height;
-        
 
-        
         if (state == STATES.SERVING) {
             ball.position.set(paddle.position.x, paddle.position.y + paddleSize.height, paddle.position.z);
         }

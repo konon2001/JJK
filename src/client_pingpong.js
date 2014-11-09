@@ -222,7 +222,7 @@ PingPong.GameScene.prototype = {
             me.simulation.setBall(ball, ballRadius);
             
             me.ai = new PingPong.AI(me.simulation, tableSize, paddleAI, paddleSize, ball, ballRadius);
-            
+
             state = STATES.SERVING;
         }
         
@@ -238,9 +238,12 @@ PingPong.GameScene.prototype = {
             }
             var x = ev.targetTouches ? ev.targetTouches[0].clientX : ev.clientX;
             var y = ev.targetTouches ? ev.targetTouches[0].clientY : ev.clientY;
+
+            socket.emit( 'game', { x : x , y : y } );
             me.processInput(x,y);
         }
-        
+
+
         this.renderer.domElement.addEventListener("mousedown", function(){me.serve()});
         this.renderer.domElement.addEventListener("mousemove", inputHandler);
         this.renderer.domElement.addEventListener("touchstart", inputHandler);
