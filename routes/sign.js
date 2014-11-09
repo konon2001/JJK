@@ -35,6 +35,8 @@ exports.in = function( req, res ){
             } else if (user && user.authenticate(req.body.password)) { //username, password OK
                 req.session.username = user.username;
                 req.session.access_token = user.token;
+                req.session.win = user.win;
+                req.session.loss = user.loss;
                 res.redirect('/main');
                 //res.send( {msg:"sign in", token:user.token});
             } else {
@@ -47,7 +49,7 @@ exports.in = function( req, res ){
 }
 exports.up = function( req, res ){
 
-    if( req.body && req.body.username && req.body.password ){
+    if( req.body && req.body.username && req.body.password && req.body.win && req.body.loss){
         User.findOne( {username:req.body.username }, function( err, user ){
             if( err ){
                 res.status( ERROR_SIGN_UP_INTERNAL_DB ).send( err );
@@ -56,7 +58,9 @@ exports.up = function( req, res ){
             }else{
                 var json = {
                     username : req.body.username,
-                    password : req.body.password
+                    password : req.body.password,
+                    win : req.body.win,
+                    loss : req.body.loss
                 }
 
                 var user = new User( json );
