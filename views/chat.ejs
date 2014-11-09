@@ -24,9 +24,11 @@
 
 	<header class="banner">
 
-		<h1 class="bannertext">
-			<a href="/join" id="logo">Back to the list</a>
-		</h1>
+		<p class="bannertext">
+			<a href="/join" id="logo">
+				<img src="/images/paddle.png" width="100px"/>
+			</a>
+		</p>
 
 	</header>
 
@@ -38,13 +40,14 @@
 		<div class="connected">
 
 			<div class="infoConnected">
-				<h2>Make a Room!!</h2>
+				<h2>You can make a room!</h2>
 				<br/>
 
 				<form class="loginForm">
 					<input type="hidden" id="yourName" value=<%=username%> /><br/>
 					<input type="text" id="room" placeholder="Input the room name" /><br/>
-					<input type="submit" id="yourEnter" value="ENTER" /><br/>
+					<input type="submit" id="yourEnter" value="MAKE" />
+					<a href="/main"><input type="button" id="yourEnter" value="CANCEL" /></a><br/>
 					<input type="hidden" id="yourEmail" value="123"/><br/>
 				</form>
 
@@ -54,7 +57,6 @@
 
 		<div class="personinside">
 
-			<img src="../img/unnamed.jpg" id="ownerImage" />
 
 			<div class="infoInside">
 				<h2>Will you Chat with <span class="nickname-chat"></span> ?</h2>
@@ -72,14 +74,13 @@
 		</div>
 
 		<div class="invite-textfield">
-
-			<h1>Wait for another friend</h1>
+			<br><br>
+			<h1>Waiting for another friend</h1><br><br>
+			<img src="/images/loader.gif" width="100px">
 
 		</div>
 
 		<div class="left">
-
-			<img src="../img/unnamed.jpg" id="leftImage" />
 
 			<div class="info">
 				<h2><span class="nickname-left"></span> has left this chat.</h2>
@@ -96,8 +97,6 @@
 		</div>
 
 		<div class="nomessages">
-
-			<img src="../img/unnamed.jpg" id="noMessagesImage" />
 
 			<div class="info">
 				<h2>You are chatting with <span class="nickname-chat"/>.</h2>
