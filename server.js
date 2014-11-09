@@ -108,7 +108,31 @@ function loadUser(req, res, next) {
     }
 }
 
+app.post('/test', function (req, res){
+    var x1 = req.param("x1")
+    var y1 = req.param("y1")
+    var z1 = req.param("z1")
+    var x2 = req.param("x2")
+    var y2 = req.param("y2")
+    var z2 = req.param("z2")
+    var x3 = req.param("x3")
+    var y3 = req.param("y3")
+    var z3 = req.param("z3")
+
+    console.log("x1 : "+ x1)
+    console.log("y1 : "+ y1)
+    console.log("z1 : "+ z1)
+    console.log("x2 : "+ x2)
+    console.log("y2 : "+ y2)
+    console.log("z2 : "+ z2)
+    console.log("x3 : "+ x3)
+    console.log("y3 : "+ y3)
+    console.log("z3 : "+ z3)
+
+ });
+
 app.get('/', function(req, res) {
+
         res.render('index.ejs',
             {
                 title: 'Ping-Pong',
