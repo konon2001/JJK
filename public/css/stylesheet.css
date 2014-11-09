@@ -12,7 +12,7 @@
 
 
 body {
-	background-color: #f0f1f3;
+	background-color: #95b3d7;
 	color:#667073;
 	font: 16px/1.3 'Arial',sans-serif;
 }
@@ -58,8 +58,8 @@ body {
 
 
 .banner {
-	height: 70px;
-	background-color: #3c4446;
+	height: 90px;
+	background-color: #799ecc;
 	margin-bottom: 200px;
 }
 
@@ -155,18 +155,17 @@ body {
 	margin:0px auto;
 	width: 700px;
 	height: 400px;
-	background-color: #ffffff;
+	background-color: #c9d9e7;
 	border-radius: 3px;
-	box-shadow:0px 3px 3px #e3e4e6;
+	/*box-shadow:0px 3px 3px #e3e4e6;*/
 	color: #637277;
 }
 .connected h2 {
 	padding-top: 20px;
 }
 .infoConnected {
-	text-align: left;
-	float: right;
-	margin: 65px 165px 0 0;
+	float: left;
+	margin: 65px 0 0 230px;
 }
 #creatorImage {
 	float: left;
@@ -208,14 +207,13 @@ body {
 #room {
 	float:left;
 	padding-left: 10px;
-	width: 200px;
+	width: 230px;
 	height: 30px;
 	border-radius: 3px;
-	box-shadow:0px 3px 3px #e3e4e6;
+	/*box-shadow:0px 3px 3px #e3e4e6;*/
 	background-color: #f0f1f3;
 	border: 1px solid #d1d1d1;
 	border-radius: 3px;
-	box-shadow:0px 3px 3px #e3e4e6;
 	margin-bottom:40px;
 }
 
@@ -224,13 +222,14 @@ body {
 	width: 110px;
 	height: 40px;
 	text-align:center;
-	background-color: #73b4d4;
+	background-color: #82a8c8;
 	border: none;
-	box-shadow: 3px 3px 3px #efedee;
+	/*box-shadow: 3px 3px 3px #efedee;*/
 	border-radius: 2px;
 	color:white;
 	font-weight: bold;
 	font-size: 15px;
+	margin: 5px;
 }
 
 
@@ -243,9 +242,9 @@ body {
 	margin:0px auto;
 	width: 700px;
 	height: 400px;
-	background-color: #ffffff;
+	background-color: #c9d9e7;
 	border-radius: 3px;
-	box-shadow:0px 3px 3px #e3e4e6;
+	/*box-shadow:0px 3px 3px #e3e4e6;*/
 	color: #637277;
 }
 .personinside h2 {
@@ -255,9 +254,9 @@ body {
 }
 
 .infoInside {
-	text-align: left;
-	float: right;
-	margin: 65px 165px 0 0;
+	text-align: center;
+	float: left;
+	margin: 65px 0 0 230px;
 }
 
 #ownerImage {
@@ -301,9 +300,9 @@ body {
 	width: 110px;
 	height: 40px;
 	text-align:center;
-	background-color: #73b4d4;
+	background-color: #82a8c8;
 	border: none;
-	box-shadow: 3px 3px 3px #efedee;
+	/*box-shadow: 3px 3px 3px #efedee;*/
 	border-radius: 2px;
 	color:white;
 	font-weight: bold;
@@ -321,9 +320,9 @@ body {
 	margin:0px auto;
 	width: 750px;
 	height: 300px;
-	background-color: #ffffff;
+	background-color: #c9d9e7;
 	border-radius: 3px;
-	box-shadow:0px 3px 3px #e3e4e6;
+	/*box-shadow:0px 3px 3px #e3e4e6;*/
 	color: #637277;
 }
 .invite-textfield h2 {
@@ -358,9 +357,9 @@ body {
 	margin:0px auto;
 	width: 750px;
 	height: 300px;
-	background-color: #ffffff;
+	background-color: #c9d9e7;
 	border-radius: 3px;
-	box-shadow:0px 3px 3px #e3e4e6;
+	/*box-shadow:0px 3px 3px #e3e4e6;*/
 	color: #637277;
 	margin-bottom: 400px;
 }
@@ -423,9 +422,9 @@ body {
 	margin:0px auto;
 	width: 750px;
 	height: 300px;
-	background-color: #ffffff;
+	background-color: #c9d9e7;
 	border-radius: 3px;
-	box-shadow:0px 3px 3px #e3e4e6;
+	/*box-shadow:0px 3px 3px #e3e4e6;*/
 	color: #637277;
 	margin-bottom: 400px;
 }
@@ -455,9 +454,9 @@ body {
 	border-radius: 50%;
 }
 .info {
-	text-align: left;
-	float: right;
-	margin: 65px 60px 0 0;
+	text-align: center;
+	float: left;
+	margin: 65px 0 0 160px;
 	width: 405px;
 	overflow: hidden;
 }
@@ -516,6 +515,10 @@ body {
 	float:right;
 }
 
+.input-opacity {
+	opacity: 0.7;
+}
+
 .chats .me p {
 	text-align:left;
 	float: left;
@@ -528,7 +531,7 @@ body {
 	max-width: 510px;
 	background-color: #FFF;
 	border-radius: 3px;
-	box-shadow: 0px 3px 3px #E3E4E6;
+	/*box-shadow: 0px 3px 3px #E3E4E6;*/
 	color: #637277;
 	line-height: 1.4;
 	word-wrap: break-word;
@@ -546,7 +549,7 @@ body {
 	max-width: 510px;
 	background-color: #FFF;
 	border-radius: 3px;
-	box-shadow: 0px 3px 3px #E3E4E6;
+	/*box-shadow: 0px 3px 3px #E3E4E6;*/
 	color: #637277;
 	line-height: 1.4;
 	word-wrap: break-word;
@@ -606,11 +609,11 @@ footer {
 	height: 45px;
 	float:right;
 	text-align:center;
-	background-color: #73b4d4;
+	background-color: #82a8c8;
 	display: block;
 	margin: 3px;
 	border: none;
-	box-shadow: 3px 3px 3px #efedee;
+	/*box-shadow: 3px 3px 3px #efedee;*/
 	border-radius: 2px;
 	color:white;
 	font-weight: bold;
@@ -624,11 +627,11 @@ footer {
 	height: 45px;
 	float:right;
 	text-align:center;
-	background-color: #73b4d4;
+	background-color: #82a8c8;
 	display: block;
 	margin: 3px;
 	border: none;
-	box-shadow: 3px 3px 3px #efedee;
+	/*box-shadow: 3px 3px 3px #efedee;*/
 	border-radius: 2px;
 	color:white;
 	font-weight: bold;
