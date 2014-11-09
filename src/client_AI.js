@@ -38,11 +38,11 @@ PingPong.AI.prototype = {
         var paddleSize = this.paddleSize;
         var tableSize = this.tableSize;
 
-        //socket.on( 'pos', function(data){
+        socket.on( 'pos', function(data){
             //myPos.x = data.x;
             //console.log('myPos', myPos.x);
             //me.ai.playInput( data.x, data.y );
-        //});
+        });
 
         if (this.simulation.getLinearVelocity().z > 0){
             //ball going against opponent
@@ -91,7 +91,7 @@ PingPong.AI.prototype = {
         var diffX = Math.abs(targetPos.x - myPos.x);
         var speedX = tableSize.width* 0.05 * this.speed;
         myPos.x += Math.min(diffX, speedX) * (myPos.x > targetPos.x ? -1 : 1);
-        //console.log('myPos after', myPos.x);
+        console.log('myPos after', myPos.x);
     }
 }
     

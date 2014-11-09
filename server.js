@@ -36,6 +36,9 @@ var MAIN_DB = 'mongodb://localhost:'+DB_PORT+'/pingpong';
 var roomArray = [];
 var roomID = [];
 var roomUser = [];
+var posx,
+    posy,
+    posz;
 
 app.set('port', MAIN_PORT);
 app.set('db-uri', MAIN_DB);
@@ -85,14 +88,6 @@ app.post('/users/signin', sign.in );
 app.get('/users/:username', sign.username );
 app.get('/main*', loadUser, main.main );
 
-app.get('/tutorial', function(req,res){
-    res.render('pingpong.ejs',
-        {
-            username : req.session.username
-        }
-    );
-});
-
 function loadUser(req, res, next) {
     if (req.session.username) {
         User.findById(req.session.username, function(user) {
@@ -109,27 +104,40 @@ function loadUser(req, res, next) {
 }
 
 app.post('/test', function (req, res){
-    var x1 = req.param("x1")
-    var y1 = req.param("y1")
-    var z1 = req.param("z1")
-    var x2 = req.param("x2")
-    var y2 = req.param("y2")
-    var z2 = req.param("z2")
-    var x3 = req.param("x3")
-    var y3 = req.param("y3")
-    var z3 = req.param("z3")
+    //var x1 = req.param("x1")
+    //var y1 = req.param("y1")
+    //var z1 = req.param("z1")
+    posx = req.param("x2")
+    posy = req.param("y2")
+    posz = req.param("z2")
+    //var x3 = req.param("x3")
+    //var y3 = req.param("y3")
+    //var z3 = req.param("z3")
 
-    console.log("x1 : "+ x1)
-    console.log("y1 : "+ y1)
-    console.log("z1 : "+ z1)
-    console.log("x2 : "+ x2)
-    console.log("y2 : "+ y2)
-    console.log("z2 : "+ z2)
-    console.log("x3 : "+ x3)
-    console.log("y3 : "+ y3)
-    console.log("z3 : "+ z3)
-
+    //console.log("x1 : "+ x1)
+    //console.log("y1 : "+ y1)
+    //console.log("z1 : "+ z1)
+    console.log("posx : "+ posx)
+    console.log("posy : "+ posy)
+    console.log("posz : "+ posz)
+    //console.log("x3 : "+ x3)
+    //console.log("y3 : "+ y3)
+    //console.log("z3 : "+ z3)
+    socketMap.forEach(function(socket, index){
+        socket.emit('key', 'data');
+    });
  });
+
+app.get('/tutorial', function(req,res){
+    res.render('pingpong.ejs',
+        {
+            username : req.session.username,
+            posx: posx,
+            posy: posy,
+            posz: posz
+        }
+    );
+});
 
 app.get('/', function(req, res) {
 
@@ -199,11 +207,18 @@ app.get('/join', function(req,res){
         }
     );
 });
+//
+var socketMap = [];
 
 var chat = io.of('/socket').on('connection', function (socket) {
 
     // When the client emits the 'load' event, reply with the
     // number of people in this chat room
+
+    socket.on('tuto', function( data ){
+        socketMap.push( socket );
+        console.log("a");
+    });
 
     socket.on('addroom',function(data){
         /*var roomlist = data;
