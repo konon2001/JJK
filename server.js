@@ -27,7 +27,10 @@ function mongoStoreConnectionArgs() {
         host: db.db.serverConfig.host,
         port: db.db.serverConfig.port,
         username: db.user,
-        password: db.pass };
+        password: db.pass,
+        win: db.win,
+        loss: db.loss
+    };
 }
 
 var MAIN_PORT = 8080;

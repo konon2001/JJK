@@ -13,9 +13,11 @@ var User = new Schema(
     {
         username : { type : String, unique: true },
         password : { type : String },
+        win : { type : Number },
+        loss : { type : Number },
         salt : {type:String},
         level : {type : Number },
-        token : {type:String},
+        token : {type:String}
     }
 );
 

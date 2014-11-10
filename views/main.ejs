@@ -42,8 +42,19 @@
                 <div  id="intro-box" class="intro-message">
                     <img src="/images/pingpong.png" width="200px"/><br><br>
                     <h1><%=username%></h1><br>
-                    <h2>___ GAMES · ___ WIN · ___ LOSS</h2>
-                    <h3>Your winning rate is ___%.</h3>
+                    <h2><%=win+loss%> GAMES · <%=win%> WIN · <%=loss%> LOSS</h2>
+                    <h3>
+                        <%
+                        if((win+loss) == 0){
+                        %>
+                        You did not play game yet. <br> Play now!
+                        <%
+                        } else {
+                        %>
+                        Your winning rate is <%=win/(win+loss)*100%> %
+                        <%
+                        }
+                        %></h3>
                     <br><br><br><br><br>
 
                     <ul class="list-inline intro-social-buttons">
