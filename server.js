@@ -195,9 +195,22 @@ app.get('/chat/:id', function(req,res){
     // Render the chant.html view
     res.render('chat.ejs',
         {
-            username : req.session.username
+            username : req.session.username,
+            roomArray: roomArray, // 방이름
+            roomID: roomID,  // 룸포트
+            roomUser: roomUser // 방만든이
         }
     );
+});
+
+app.get('/game', function(req,res){
+    res.render('client_pingpong.ejs',
+        {
+            username : req.session.username,
+            roomArray: roomArray, // 방이름
+            roomID: roomID,  // 룸포트
+            roomUser: roomUser // 방만든이
+        });
 });
 
 app.get('/join', function(req,res){
@@ -214,7 +227,6 @@ app.get('/join', function(req,res){
 var socketMap = [];
 
 var chat = io.of('/socket').on('connection', function (socket) {
-
     // When the client emits the 'load' event, reply with the
     // number of people in this chat room
 
@@ -247,7 +259,6 @@ var chat = io.of('/socket').on('connection', function (socket) {
             });
         }
         else if(room.length >= 2) {
-
             chat.emit('tooMany', {boolean: true});
 
         }
@@ -323,6 +334,9 @@ var chat = io.of('/socket').on('connection', function (socket) {
         socket.leave(socket.room);
     });
 
+    socket.on('startGame', function(data){
+        console.log(data)
+    })
 
     // Handle the sending of messages
     socket.on('msg', function(data){
