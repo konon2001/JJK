@@ -22,7 +22,15 @@ body {
 
 /* ------------ Header styles ------------ */
 
-
+/*
+header {
+	position:fixed;
+	left:0;
+	width:100%;
+	background-color: white;
+	height: 130px;
+}
+*/
 
 /* ------ Home ------ */
 
@@ -680,3 +688,14 @@ footer {
 	margin: 0 auto 200px;
 	overflow:hidden;
 }
+
+/*
+.navbar-fixed-top {
+	position: fixed;
+	right: 0;
+	left: 0;
+	z-index: 1030;
+	-webkit-transform: translate3d(0,0,0);
+	-o-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}*/
