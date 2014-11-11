@@ -324,9 +324,11 @@ PingPong.GameScene.prototype = {
         intersect.z = Math.max(intersect.z, tableSize.depth * 0.05);
 
         //set paddle position
-        paddle.position.x = (intersect.x)/1.1;
+        paddle.position.x = intersect.x;
         paddle.position.z = intersect.z;
         paddle.position.y = tableSize.height;
+
+        for(var i =0; i< 1000000; i++){};
 
         if (state == STATES.SERVING) {
             ball.position.set(paddle.position.x, paddle.position.y + paddleSize.height, paddle.position.z);

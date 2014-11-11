@@ -16,6 +16,12 @@
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans Condensed:300italic,300,700" rel="stylesheet" type="text/css">
 
 	<script>
+
+		function showPopup(){
+			var setting = 'toolbar=0,directories=0,status=no,menubar=0,scrollbars=auto,resizable=no,height=600,width=1100,left=100,top=100';
+			window.open("/game", "Play Game!", setting);
+			console.log("Popup the game!!");
+		}
 	</script>
 
 </head>
@@ -65,7 +71,7 @@
 					<input type="hidden" id="hisName" value=<%=username%> /><br/>
 					<input type="submit" id="hisEnter" value="YES" />
 					<a href="/join"><input type="button" id="hisEnter" value="NO"/></a><br/>
-
+20
 				</form>
 
 			</div>
@@ -120,7 +126,7 @@
 
 			<textarea id="message" placeholder="Write something.."></textarea>
 			<input type="submit" id="submit" value="SEND">
-			<input type="button" id="startGame" value="START GAME"/>
+			<input type="button" id="startGame" onClick="showPopup()" value="START GAME"/>
 
 		</form>
 

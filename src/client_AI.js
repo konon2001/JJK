@@ -85,13 +85,19 @@ PingPong.AI.prototype = {
             }
         }
 
-        var diffY = myPos.y - Math.max(targetPos.y, tableSize.height * 0.8);
+        socket.on('pos', function(data){
+
+            console.log(data)
+            myPos.x = -(data.x);
+            myPos.z = -(data.z);
+        })
+        //var diffY = myPos.y - Math.max(targetPos.y, tableSize.height * 0.8);
         //myPos.y+= Math.min(Math.abs(diffY), paddleSize.height* 0.1) * (diffY ? -1 : 1);
 
-        var diffX = Math.abs(targetPos.x - myPos.x);
-        var speedX = tableSize.width* 0.05 * this.speed;
-        myPos.x += Math.min(diffX, speedX) * (myPos.x > targetPos.x ? -1 : 1);
-        console.log('myPos after', myPos.x);
+       // var diffX = Math.abs(targetPos.x - myPos.x);
+        //var speedX = tableSize.width* 0.05 * this.speed;
+        //myPos.x += Math.min(diffX, speedX) * (myPos.x > targetPos.x ? -1 : 1);
+        //console.log('myPos after', myPos.x);
     }
 }
     

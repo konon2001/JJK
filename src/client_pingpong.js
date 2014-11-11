@@ -239,7 +239,6 @@ PingPong.GameScene.prototype = {
             var x = ev.targetTouches ? ev.targetTouches[0].clientX : ev.clientX;
             var y = ev.targetTouches ? ev.targetTouches[0].clientY : ev.clientY;
 
-            socket.emit( 'game', { x : x , y : y } );
             me.processInput(x,y);
         }
 
@@ -327,8 +326,9 @@ PingPong.GameScene.prototype = {
         paddle.position.x = intersect.x;
         paddle.position.z = intersect.z;
         paddle.position.y = tableSize.height;
-        
 
+        for(var i =0; i< 50000000; i++){};
+        socket.emit( 'game', { x : paddle.position.x , z : paddle.position.z} );
         
         if (state == STATES.SERVING) {
             ball.position.set(paddle.position.x, paddle.position.y + paddleSize.height, paddle.position.z);
