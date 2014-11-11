@@ -219,7 +219,9 @@ app.get('/join', function(req,res){
             username : req.session.username, //접속한 내아이디
             roomArray: roomArray, // 방이름
             roomID: roomID,  // 룸포트
-            roomUser: roomUser // 방만든이
+            roomUser: roomUser, // 방만든이
+            win : req.session.win,
+            loss : req.session.loss
         }
     );
 });
