@@ -7,7 +7,6 @@ $(function(){
 
 	// connect to the socket
 	var socket = io.connect('/socket');
-	var socket2 = io.connect("http://localhost:8080")
 
 	// variables which hold the data for each person
 	var name = "",
@@ -113,8 +112,6 @@ $(function(){
 
 				socket.emit('login', {user: name, avatar: email, id: id});
 
-				socket2.emit('login', {user: name, avatar: email, id: id});
-
 			});
 		}
 
@@ -186,6 +183,8 @@ $(function(){
 
 	chatForm.on('submit', function(e){
 
+		console.log("????")
+
 		e.preventDefault();
 
 		// Create a new chat message and display it directly
@@ -203,6 +202,16 @@ $(function(){
 		// Empty the textarea
 		textarea.val("");
 	});
+
+	/*('#startGame').onClick('#startGame', function (e) {
+
+		console.log("들어오나");
+		// Create a new chat message and display it directly
+
+		// Send the message to the other person in the chat
+		socket.emit('startGame', {user: name });
+
+	});*/
 
 	// Update the relative time stamps on the chat messages every minute
 

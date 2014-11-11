@@ -207,6 +207,8 @@ exports.chat = function(req,res) {
 
 		e.preventDefault();
 
+		console.log(e)
+
 		// Create a new chat message and display it directly
 
 		showMessage("chatStarted");
