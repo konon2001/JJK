@@ -35,7 +35,7 @@ function mongoStoreConnectionArgs() {
 
 var MAIN_PORT = 8080;
 var DB_PORT = 27017;
-var MAIN_DB = 'mongodb://localhost:'+DB_PORT+'/pingpong';
+var MAIN_DB = 'mongodb://172.16.50.54:'+DB_PORT+'/pingpong';
 var roomArray = [];
 var roomID = [];
 var roomUser = [];
@@ -237,6 +237,14 @@ var chat = io.of('/socket').on('connection', function (socket) {
         console.log("a");
     });
 
+    socket.on('game', function timer( data ){
+        var posx = data.x;
+        var posz = data.z;
+
+        socket.broadcast.emit('pos', {x: data.x, z: data.z});
+        //console.log('ingame : '+ roomID[0])
+    });
+
     socket.on('addroom',function(data){
         /*var roomlist = data;
         socket.broadcast.emit('roomlist', roomlist);
@@ -345,6 +353,7 @@ var chat = io.of('/socket').on('connection', function (socket) {
 
         // When the server receives a message, it sends it to the other person in the room.
         socket.broadcast.to(socket.room).emit('receive', {msg: data.msg, user: data.user, img: data.img});
+        console.log('msg : '+socket.room)
     });
 });
 

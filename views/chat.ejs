@@ -14,7 +14,6 @@
 	<script src = "http://code.jquery.com/jquery-1.7.1.js"></script>
 	<link type="text/css" rel="stylesheet" href="../css/stylesheet.css" />
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans Condensed:300italic,300,700" rel="stylesheet" type="text/css">
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
 	<script>
 
@@ -28,10 +27,8 @@
 </head>
 
 <body>
-<script src="../js/moment.min.js"></script>
-<script src="/socket.io/socket.io.js"></script>
-<script src="../js/chat.js"></script>
-	<header class="banner navbar-fixed-top">
+
+	<header class="banner">
 
 		<p class="bannertext">
 			<a href="/join" id="logo">
@@ -74,7 +71,7 @@
 					<input type="hidden" id="hisName" value=<%=username%> /><br/>
 					<input type="submit" id="hisEnter" value="YES" />
 					<a href="/join"><input type="button" id="hisEnter" value="NO"/></a><br/>
-
+20
 				</form>
 
 			</div>
@@ -135,7 +132,10 @@
 
 	</footer>
 
-
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="../js/moment.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="../js/chat.js"></script>
 
 </body>
 

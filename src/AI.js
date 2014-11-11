@@ -91,7 +91,6 @@ PingPong.AI.prototype = {
         var diffX = Math.abs(targetPos.x - myPos.x);
         var speedX = tableSize.width* 0.05 * this.speed;
         myPos.x += Math.min(diffX, speedX) * (myPos.x > targetPos.x ? -1 : 1);
-        //console.log('myPos after', myPos.x);
     }
 }
     
