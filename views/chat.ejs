@@ -14,10 +14,8 @@
 	<script src = "http://code.jquery.com/jquery-1.7.1.js"></script>
 	<link type="text/css" rel="stylesheet" href="../css/stylesheet.css" />
 	<link href="http://fonts.googleapis.com/css?family=Open+Sans Condensed:300italic,300,700" rel="stylesheet" type="text/css">
-	<script src = "/socket.io/socket.io.js"></script>
 
 	<script>
-		var socket = io.connect('/socket');
 	</script>
 
 </head>
@@ -122,19 +120,12 @@
 
 			<textarea id="message" placeholder="Write something.."></textarea>
 			<input type="submit" id="submit" value="SEND">
+			<input type="button" id="startGame" value="START GAME"/>
 
 		</form>
 
-		<button id="startGame">START GAME</button>
-
 	</footer>
-	<script>
-		$('#startGame').on('click', function(){
-			socket.emit('startGame', {user: name });
 
-			location = '/game/<%roomID%>'
-		});
-	</script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="../js/moment.min.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
