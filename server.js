@@ -35,7 +35,7 @@ function mongoStoreConnectionArgs() {
 
 var MAIN_PORT = 8080;
 var DB_PORT = 27017;
-var MAIN_DB = 'mongodb://172.16.50.54:'+DB_PORT+'/pingpong';
+var MAIN_DB = 'mongodb://203.252.160.81:'+DB_PORT+'/pingpong';
 var roomArray = [];
 var roomID = [];
 var roomUser = [];
