@@ -5,10 +5,10 @@
     <script src = "/socket.io/socket.io.js"></script>
     <title>Customer Manager</title>
 
-    <link type="text/css" rel="stylesheet" href="css/stylesheet.css" />
     <link href="http://fonts.googleapis.com/css?family=Open+Sans Condensed:300italic,300,700" rel="stylesheet" type="text/css">
     <link href="/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="/public/css/landing-page.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="css/stylesheet.css" />
 
     <!-- Vendor Libs: jQuery only used for Bootstrap functionality -->
     <script src="/lib/angular-1.2.24/angular.js"></script>
@@ -30,36 +30,60 @@
 
 
 <body data-ng-controller="ToolController" >
-<div ng-view></div>
+
+<header class="banner navbar-fixed-top">
+
+    <p class="bannertext">
+        <a href="/main" id="logo">
+            <img src="/images/paddle.png" width="100px"/>
+        </a>
+    </p>
+
+</header>
+
 <div class="intro-header">
     <div class="container">
         <div class="row">
             <div class="col-lg-12" >
                 <div  id="intro-box" class="intro-message">
-                    <h3><%=username%>님 접속중...</h3>
-                    <br><br><br><br><br>
+                    <h1><%=username%></h1><br>
+                    <h2><%=win+loss%> GAMES · <%=win%> WIN · <%=loss%> LOSS</h2>
+                    <h3>
+                        <%
+                        if((win+loss) == 0){
+                        %>
+                        You did not play game yet. <br> Click the room & Play now!
+                        <%
+                        } else {
+                        %>
+                        Your winning rate is <%=win/(win+loss)*100%> %
+                        <%
+                        }
+                        %>
+                    </h3>
+                    <br><br>
+
                     <ul class="list-inline intro-social-buttons">
 
-
-                        <%for(var i=0; i<roomID.length; i++){
-                            if(roomArray[i] != null){
-                        %>
-                            <li>
-                                <a href="/chat/<%=roomID[i]%>" id="btn-sign" class="btn btn-default btn-lg">
-                                    <span class="network-name-noneuppercase">
-                                        <i class="glyphicon glyphicon-chevron-right"></i>
-                                        <%=roomArray[i]%> (host: <%=roomUser[i]%>)
-                                    </span>
-                                </a>
-                            </li>
-                        <br><br>
-                        <%
-                        }}%>
-
+                    <%for(var i=0; i<roomID.length; i++){
+                        if(roomArray[i] != null){
+                    %>
                         <li>
-                            <!--<i class="fa fa-twitter fa-fw"></i>-->
-                            <a href="/main" id="btn-more" class="btn btn-default btn-lg"><span class="network-name"><i class="glyphicon glyphicon-step-backward"></i> backward</span></a>
+                            <a href="/chat/<%=roomID[i]%>" id="btn-sign" class="btn btn-default btn-lg">
+                                <span class="network-name-noneuppercase">
+                                    <i class="glyphicon glyphicon-chevron-right"></i>
+                                    <%=roomArray[i]%> (host: <%=roomUser[i]%>)
+                                </span>
+                            </a>
                         </li>
+                    <br><br>
+                    <%
+                    }}%>
+
+                    <li>
+                        <!--<i class="fa fa-twitter fa-fw"></i>-->
+                        <a href="/main" id="btn-more" class="btn btn-default btn-lg"><span class="network-name"><i class="glyphicon glyphicon-step-backward"></i> backward</span></a>
+                    </li>
                     </ul>
                 </div>
             </div>

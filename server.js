@@ -35,7 +35,7 @@ function mongoStoreConnectionArgs() {
 
 var MAIN_PORT = 8080;
 var DB_PORT = 27017;
-var MAIN_DB = 'mongodb://218.153.119.153:'+DB_PORT+'/pingpong';
+var MAIN_DB = 'mongodb://172.16.50.54:'+DB_PORT+'/pingpong';
 var roomArray = [];
 var roomID = [];
 var roomUser = [];
@@ -220,7 +220,9 @@ app.get('/join', function(req,res){
             username : req.session.username, //접속한 내아이디
             roomArray: roomArray, // 방이름
             roomID: roomID,  // 룸포트
-            roomUser: roomUser // 방만든이
+            roomUser: roomUser, // 방만든이
+            win : req.session.win,
+            loss : req.session.loss
         }
     );
 });
