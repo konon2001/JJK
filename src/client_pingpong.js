@@ -6,8 +6,20 @@
 'use strict';
 
 (function(){
-    
-window.PingPong = window.PingPong || {};
+    var bh = 0;
+    socket.emit('bh', {bh:bh});
+
+    socket.on('checkbh', function ( data ){
+        bh = data.check;
+
+        if(bh==1)
+            console.log('bh : '+bh);
+        else {
+            console.log('bh : '+bh);
+        }
+    });
+
+    window.PingPong = window.PingPong || {};
 
 var camera, scene, controls;
 var screenSize, tableSize, paddleSize, ballSize;
@@ -327,14 +339,37 @@ PingPong.GameScene.prototype = {
         paddle.position.z = intersect.z;
         paddle.position.y = tableSize.height;
 
-        for(var i =0; i< 50000000; i++){};
-        socket.emit( 'game', { x : paddle.position.x , z : paddle.position.z} );
-        
+        for(var i =0; i< 10000001; i++){
+            if(i == 10000000) {
+                socket.emit('game', {x: paddle.position.x, z: paddle.position.z});
+                break;
+            }
+        }
+
         if (state == STATES.SERVING) {
             ball.position.set(paddle.position.x, paddle.position.y + paddleSize.height, paddle.position.z);
         }
         else {
-            this.checkBallHit();   
+            if(bh==1){
+                for(var i=0; i<50001; i++) {
+                    if(i== 50000) {
+                        socket.emit('ballpos', {
+                            ballposx: ball.position.x,
+                            ballposy: ball.position.y,
+                            ballposz: ball.position.z
+                        });
+                        break;
+                    }
+                }
+            }
+            if(bh==0){
+                socket.on('bp', function(data){
+                    ball.position.x = -data.ballposx;
+                    ball.position.y = data.ballposy;
+                    ball.position.z = -data.ballposz;
+                });
+            }
+            this.checkBallHit();
         }
         
         //set paddle rotation

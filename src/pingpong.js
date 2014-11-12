@@ -162,7 +162,8 @@ PingPong.GameScene.prototype = {
                 var netBox = new THREE.Box3();
                 netBox.setFromCenterAndSize(new THREE.Vector3(0,tableSize.height,0), new THREE.Vector3(tableSize.width, tableSize.height, tableSize.depth * 0.1));
                 me.simulation.addBox(netBox);
-                
+                console.log('netBox :'+ netBox);
+
                 var netHitCube = new THREE.Mesh(new THREE.CubeGeometry(netBox.max.x - netBox.min.x, netBox.max.y - netBox.min.y, netBox.max.z - netBox.min.z),
                                                        new THREE.MeshBasicMaterial({color:0x000000}))
                 netHitCube.position.y = tableSize.height;
@@ -328,12 +329,16 @@ PingPong.GameScene.prototype = {
         paddle.position.z = intersect.z;
         paddle.position.y = tableSize.height;
 
-        for(var i =0; i< 1000000; i++){};
+        console.log(tableSize.height);
 
         if (state == STATES.SERVING) {
             ball.position.set(paddle.position.x, paddle.position.y + paddleSize.height, paddle.position.z);
         }
         else {
+            if((ball.position.y < 0.85) && (ball.position.z > -0.1) && (ball.position.z < 0.1)){
+                console.log("oh!!")
+                state = STATES.SERVING;
+            }
             this.checkBallHit();   
         }
         

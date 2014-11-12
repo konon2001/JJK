@@ -35,10 +35,11 @@ function mongoStoreConnectionArgs() {
 
 var MAIN_PORT = 8080;
 var DB_PORT = 27017;
-var MAIN_DB = 'mongodb://172.16.50.54:'+DB_PORT+'/pingpong';
+var MAIN_DB = 'mongodb://218.153.119.153:'+DB_PORT+'/pingpong';
 var roomArray = [];
 var roomID = [];
 var roomUser = [];
+var bh = 0;
 var posx,
     posy,
     posz;
@@ -235,12 +236,23 @@ var chat = io.of('/socket').on('connection', function (socket) {
         console.log("a");
     });
 
-    socket.on('game', function timer( data ){
+    socket.on('bh', function( data ){
+        bh = data.bh+1;
+
+        socket.broadcast.emit('checkbh', {check: bh});
+        //console.log('ingame : '+ roomID[0])
+    });
+
+    socket.on('game', function( data ){
         var posx = data.x;
         var posz = data.z;
 
         socket.broadcast.emit('pos', {x: data.x, z: data.z});
         //console.log('ingame : '+ roomID[0])
+    });
+
+    socket.on('ballpos', function(data){
+        socket.broadcast.emit('bp', {ballposx:data.ballposx, ballposy:data.ballposy, ballposz:data.ballposz})
     });
 
     socket.on('addroom',function(data){
