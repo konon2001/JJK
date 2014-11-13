@@ -35,7 +35,7 @@ function mongoStoreConnectionArgs() {
 
 var MAIN_PORT = 8080;
 var DB_PORT = 27017;
-var MAIN_DB = 'mongodb://172.16.50.54:'+DB_PORT+'/pingpong';
+var MAIN_DB = 'mongodb://localhost:'+DB_PORT+'/pingpong';
 var roomArray = [];
 var roomID = [];
 var roomUser = [];
@@ -43,6 +43,8 @@ var bh = 0;
 var posx,
     posy,
     posz;
+var cnt1 = 0, cnt2 = 0;
+var end1, end2, endname, scoreTemp;
 
 app.set('port', MAIN_PORT);
 app.set('db-uri', MAIN_DB);
@@ -107,6 +109,11 @@ function loadUser(req, res, next) {
     }
 }
 
+app.get('/end', function(req,res){
+    end = req.session.cnt1;
+    console.log(end)
+});
+
 app.post('/test', function (req, res){
     //var x1 = req.param("x1")
     //var y1 = req.param("y1")
@@ -138,7 +145,8 @@ app.get('/tutorial', function(req,res){
             username : req.session.username,
             posx: posx,
             posy: posy,
-            posz: posz
+            posz: posz,
+            cnt2: req.session.cnt2
         }
     );
 });
@@ -261,6 +269,25 @@ var chat = io.of('/socket').on('connection', function (socket) {
         /*var roomlist = data;
         socket.broadcast.emit('roomlist', roomlist);
         console.log(roomlist);*/
+    });
+
+    socket.on('end1', function(data){
+        end1 = data.user1;
+        endname = data.user1name;
+        console.log('end1 : '+end1);
+        console.log('name : '+endname);
+        User.findById(data.user1name, function(user){
+            if(user) {
+                console.log(User.win);
+                //User.update({win: scoreTemp});
+            }
+        })
+
+    });
+
+    socket.on('end2', function(data){
+        end2 = data.user2;
+        console.log('end2 : '+end2)
     });
 
     socket.on('load',function(data){

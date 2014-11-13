@@ -7,7 +7,7 @@
 
     <script src = "/socket.io/socket.io.js"></script>
     <script>
-        var socket = io.connect( "http://218.153.119.153:8080/tutorial");
+        var socket = io.connect( "http://localhost/socket");
         socket.emit('tuto', {msg:'hello'});
     </script>
     <script type="text/javascript" src="/lib/three.min.js"></script>
@@ -18,11 +18,13 @@
     <script type="text/javascript" src="/src/main.js"></script>
     <script src = "http://code.jquery.com/jquery-1.7.1.js"></script>
 
+    <link href="/public/css/landing-page.css" rel="stylesheet">
     <style>
         .clientInfo {
             position: absolute;
             background: white;
             opacity: 0.5;
+            margin-left: 750px;
         }
 
     </style>
@@ -31,9 +33,17 @@
 
 <body style="position:absolute;padding:0;margin:0;width:100%;height:100%">
 <div id="container">
-    <input type="hidden" id="Posx" value="<%=posx%>" /><br/>
+    <input type="hidden" id="Posx" value="<%=posx%>" />
+    <input type="hidden" id="user" value="<%=username%>"/>
     <div class="clientInfo">
-       <h3><%=username%>님 접속중...</h3>
+        <table id="score" border="1px" padding="0px">
+            <tr>
+                <td><h1><%=username%></h1></td>
+                <td width="50px"><h1><div id="usr1">0</div></h1></td>
+                <td width="50px"><h1><div id="usr2">0</div></h1></td>
+                <td><h1>Computer</h1></td>
+            </tr>
+        </table>
     </div>
 </div>
 </body>

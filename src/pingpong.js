@@ -24,6 +24,11 @@ var input = {x:0, y: 0};
 var inputPlane;
 var projector = new THREE.Projector();
 
+    var cnt1=0;
+    var cnt2=0;
+    var checku=0;
+    var checkc=0;
+
 PingPong.GameScene = function(renderer, settings) {
     this.renderer = renderer;
     this.settings = settings;
@@ -329,24 +334,153 @@ PingPong.GameScene.prototype = {
         paddle.position.z = intersect.z;
         paddle.position.y = tableSize.height;
 
-        console.log(tableSize.height);
+        function tempAlert(msg,duration)
+        {
+            var el = document.createElement("div");
+            el.setAttribute("style","position:absolute;top:50%;left:50%;background-color:white;");
+            el.innerHTML = msg;
+            setTimeout(function(){
+                el.parentNode.removeChild(el);
+            },duration);
+            document.body.appendChild(el);
+        }
 
         if (state == STATES.SERVING) {
             ball.position.set(paddle.position.x, paddle.position.y + paddleSize.height, paddle.position.z);
         }
         else {
-            if((ball.position.y < 0.85) && (ball.position.z > -0.1) && (ball.position.z < 0.1)){
-                console.log("oh!!")
+            //console.log('ballx : '+ball.position.x + 'bally : '+ball.position.y +'ballz : '+ball.position.z)
+            //console.log('z : ' + ball.position.z);
+            if((ball.position.y < 0.8) && (ball.position.z > -0.01) && (ball.position.z < 0.01)) {
+                if (ball.position.z < -0.001) {
+                    cnt1++;
+                    console.log('cnt1 : '+cnt1);
+
+                    $.ajax({
+                        type: 'get',
+                        url: '/tutorial',
+                        datatype: 'text',
+                        success: function (data) {
+                            $("#usr1").html(cnt1);
+                        }
+                    })
+
+                    tempAlert('<h1> you win </h1>', 1000);
+                }
+                else if(ball.position.z > 0.001) {
+                    cnt2++;
+                    console.log('cnt2 : ' +cnt2);
+
+                    $.ajax({
+                        type: 'get',
+                        url: '/tutorial',
+                        datatype: 'text',
+                        success: function(data) {
+                           $("#usr2").html(cnt2);
+                        }
+                    })
+
+                    tempAlert('<h1> computer win </h1>', 1000);
+                }
                 state = STATES.SERVING;
             }
-            this.checkBallHit();   
+
+            else if((ball.position.y < 0.75) && (ball.position.z < -0.01) && ((ball.position.x > 0.7) || (ball.position.x < -0.7))){
+                cnt2++;
+                checku = 0;
+                $.ajax({
+                    type: 'get',
+                    url: '/tutorial',
+                    datatype: 'text',
+                    success: function(data) {
+                        $("#usr2").html(cnt2);
+                    }
+                })
+
+                tempAlert('<h1> Computer Win </h1>', 1000);
+                state = STATES.SERVING;
+
+            }
+
+            else if((ball.position.y < 0.75) && (ball.position.z > 0.01) && ((ball.position.x > 0.7) || (ball.position.x < -0.7))){
+                cnt1++;
+                checku = 0;
+                $.ajax({
+                    type: 'get',
+                    url: '/tutorial',
+                    datatype: 'text',
+                    success: function(data) {
+                        $("#usr1").html(cnt1);
+                    }
+                })
+                tempAlert('<h1> You Win </h1>', 1000);
+                state = STATES.SERVING;
+            }
+
+            else if((-0.68 < ball.position.x) && (ball.position.x < 0.68) && (0.01 < ball.position.z) && (ball.position.z < 2.0) && (ball.position.y < 0.72)){
+                checku = 1;
+            }
+
+            else if((-0.68 < ball.position.x) && (ball.position.x < 0.68) && (-0.01 > ball.position.z) && (ball.position.z > -2.0) && (ball.position.y < 0.72)){
+                checkc = 1;
+            }
+
+            if((checku==1) && (ball.position.y < 0.7) && (ball.position.z > 2.0)){
+                cnt2++;
+                checku = 0;
+                $.ajax({
+                    type: 'get',
+                    url: '/tutorial',
+                    datatype: 'text',
+                    success: function(data) {
+                        $("#usr2").html(cnt2);
+                    }
+                })
+
+                tempAlert('<h1> Computer Win </h1>', 1000);
+                state = STATES.SERVING;
+
+            }
+            if((checkc==1) && (ball.position.y < 0.7) && (ball.position.z < -2.0)){
+                cnt1++;
+                checku = 0;
+                $.ajax({
+                    type: 'get',
+                    url: '/tutorial',
+                    datatype: 'text',
+                    success: function(data) {
+                        $("#usr1").html(cnt1);
+                    }
+                })
+
+                tempAlert('<h1> You Win </h1>', 1000);
+                state = STATES.SERVING;
+
+            }
+
+            if(cnt1 == 2){
+                tempAlert('<br><h1> You Win ! </h1><br><h2>Back to the menu page.</h2><br>', 4000);
+                var username = $("#user").val();
+                socket.emit('end1', {user1:cnt1, user1name: username});
+
+                document.location.href="/main";
+            }
+
+            else if(cnt2 == 2){
+                tempAlert('<br><h1> Computer Win ! </h1><br><h2>Back to the menu page.</h2><br>', 4000);
+                socket.emit('end2', {user2: cnt2});
+
+                document.location.href="/main";
+            }
+
+            this.checkBallHit();
         }
         
         //set paddle rotation
         var dx = Math.min(1,Math.abs(paddle.position.x/(tableSize.width*0.6)));
         var dxAI = Math.min(1,Math.abs(paddleAI.position.x/(tableSize.width*0.6)));
         
-        
+
         paddle.rotation.z = Math.PI * 0.5 * dx * (paddle.position.x > 0 ? -1.0 : 1.0);
         paddle.rotation.x = Math.PI * 0.2 * dx;
         paddle.rotation.y = Math.PI * 0.2 * dx * (paddle.position.x > 0 ? 1.0 : -1.0);
