@@ -7,16 +7,16 @@
 
     <script src = "/socket.io/socket.io.js"></script>
     <script>
-        var socket = io.connect( "http://localhost/socket");
+        var socket = io.connect( "http://localhost:8080/socket");
         socket.emit('tuto', {msg:'hello'});
     </script>
+    <script src = "http://code.jquery.com/jquery-1.7.1.js"></script>
     <script type="text/javascript" src="/lib/three.min.js"></script>
     <script type="text/javascript" src="/src/physics.js"></script>
     <script type="text/javascript" src="/src/AI.js"></script>
     <script type="text/javascript" src="/src/audio.js"></script>
     <script type="text/javascript" src="/src/pingpong.js"></script>
     <script type="text/javascript" src="/src/main.js"></script>
-    <script src = "http://code.jquery.com/jquery-1.7.1.js"></script>
 
     <link href="/public/css/landing-page.css" rel="stylesheet">
     <style>
@@ -38,10 +38,10 @@
     <div class="clientInfo">
         <table id="score" border="1px" padding="0px">
             <tr>
-                <td><h1><%=username%></h1></td>
-                <td width="50px"><h1><div id="usr1">0</div></h1></td>
-                <td width="50px"><h1><div id="usr2">0</div></h1></td>
-                <td><h1>Computer</h1></td>
+                <td align="center"><h1><%=username%></h1></td>
+                <td width="50px" align="center"><h1><div id="usr1">0</div></h1></td>
+                <td width="50px" align="center"><h1><div id="usr2">0</div></h1></td>
+                <td align="center"><h1>Computer</h1></td>
             </tr>
         </table>
     </div>

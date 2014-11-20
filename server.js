@@ -40,9 +40,9 @@ var roomArray = [];
 var roomID = [];
 var roomUser = [];
 var bh = 0;
-var posx,
-    posy,
-    posz;
+var posx=0,
+    posy=0,
+    posz=0;
 var cnt1 = 0, cnt2 = 0;
 var end1, end2, endname, scoreTemp;
 
@@ -134,19 +134,14 @@ app.post('/test', function (req, res){
     //console.log("x3 : "+ x3)
     //console.log("y3 : "+ y3)
     //console.log("z3 : "+ z3)
-    socketMap.forEach(function(socket, index){
-        socket.emit('key', 'data');
-    });
  });
 
 app.get('/tutorial', function(req,res){
     res.render('pingpong.ejs',
         {
             username : req.session.username,
-            posx: posx,
-            posy: posy,
-            posz: posz,
-            cnt2: req.session.cnt2
+            cnt2: req.session.cnt2,
+            posx: posx
         }
     );
 });
@@ -195,10 +190,6 @@ app.get('/create', function(req,res){
     res.redirect('/chat/'+id);
 });
 
-app.get('/test', function(req,res){
-    console.log("test");
-});
-
 app.get('/chat/:id', function(req,res){
 
     // Render the chant.html view
@@ -243,7 +234,6 @@ var chat = io.of('/socket').on('connection', function (socket) {
 
     socket.on('tuto', function( data ){
         socketMap.push( socket );
-        console.log("a");
     });
 
     socket.on('bh', function( data ){
@@ -290,6 +280,14 @@ var chat = io.of('/socket').on('connection', function (socket) {
         console.log('end2 : '+end2)
     });
 
+    socket.on('andro', function(data){
+        socket.emit('andpos', {
+                    posx: posx,
+                    posy: posy,
+                    posz: posz
+                });
+            });
+
     socket.on('load',function(data){
 
         var room = findClientsSocket(io,data,'/socket');
@@ -320,6 +318,11 @@ var chat = io.of('/socket').on('connection', function (socket) {
         roomArray.push(data.room);
         roomID.push(data.id);
         roomUser.push(data.user);
+        socketMap.push(socket.id);
+
+        console.log('map : '+socketMap);
+        console.log('ID : ' +roomID);
+        console.log('User : ' +roomUser);
 
         var room = findClientsSocket(io, data.id, '/socket');
         // Only two people per room are allowed

@@ -1,11 +1,7 @@
-/* 
- * PingPongWebGL is licensed under MIT licensed. See LICENSE.md file for more information.
- * Copyright (c) 2014 Imanol Fernandez @MortimerGoro
-*/
-
 'use strict';
 
 (function(){
+    var username = $("#user").val();
     var bh = 0;
     socket.emit('bh', {bh:bh});
 

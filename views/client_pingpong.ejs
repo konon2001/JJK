@@ -10,13 +10,14 @@
         var socket = io.connect( "http://localhost:8080/socket")
 
     </script>
+
+    <script src = "http://code.jquery.com/jquery-1.7.1.js"></script>
     <script type="text/javascript" src="/lib/three.min.js"></script>
     <script type="text/javascript" src="/src/client_physics.js"></script>
     <script type="text/javascript" src="/src/client_AI.js"></script>
     <script type="text/javascript" src="/src/client_audio.js"></script>
-    <script type="text/javascript" src="/src/client_pingpong.js"></script>
     <script type="text/javascript" src="/src/client_main.js"></script>
-    <script src = "http://code.jquery.com/jquery-1.7.1.js"></script>
+    <script type="text/javascript" src="/src/client_pingpong.js"></script>
 
     <style>
         .clientInfo {
@@ -30,6 +31,7 @@
 
 <body style="position:absolute;padding:0;margin:0;width:100%;height:100%">
 <div id="container">
+    <input type="hidden" id="user" value="<%=username%>"/>
     <div class="clientInfo">
       <!--<input type="hidden" id="roomID" value=<%=roomID%> /><br/>-->
        <h3><%=username%>님 접속중...</h3>
