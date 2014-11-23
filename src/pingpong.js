@@ -2,14 +2,15 @@
 'use strict';
 
 (function(){
-    var username = $("#user").val();
+/*
+    var username = $("#user").val();*/
     var socketid = socket.id;
 
-    socket.emit('andro', {username:username});
+    socket.emit('andro', {});
 
     socket.on('andpos', function(data){
             console.log('posx : '+data.posx);
-            socket.emit('andro', {username:username});
+            //socket.emit('andro', {username:username});
         }
     );
     
@@ -464,6 +465,7 @@ PingPong.GameScene.prototype = {
 
             }
 
+            var username = $("#user").val();
             if(cnt1 == 2){
                 tempAlert('<br><h1> You Win ! </h1><br><h2>Back to the menu page.</h2><br>', 4000);
                 socket.emit('end1', {user1:cnt1, user1name: username});
@@ -477,6 +479,7 @@ PingPong.GameScene.prototype = {
 
                 document.location.href="/main";
             }
+
 
             this.checkBallHit();
         }
@@ -515,7 +518,7 @@ PingPong.GameScene.prototype = {
             var zDistance = paddle.position.z - ball.position.z;
             var xDistance = Math.abs(paddle.position.x - ball.position.x); 
             var yDistance = paddle.position.y - ball.position.y;
-            hit = zDistance < alertSize.depth * 0.03 && xDistance < paddleSize.width && Math.abs(yDistance) < paddleSize.height * 0.75;
+            hit = zDistance < tableSize.depth * 0.03 && xDistance < paddleSize.width && Math.abs(yDistance) < paddleSize.height * 0.75;
             hitting = zDistance < tableSize.depth * 0.2 && xDistance < paddleSize.width;
         }
         

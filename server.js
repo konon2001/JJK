@@ -266,18 +266,53 @@ var chat = io.of('/socket').on('connection', function (socket) {
         endname = data.user1name;
         console.log('end1 : '+end1);
         console.log('name : '+endname);
-        User.findById(data.user1name, function(user){
-            if(user) {
-                console.log(User.win);
-                //User.update({win: scoreTemp});
+
+        User.findOneAndUpdate(
+            { username: endname },
+            { '$inc': {'win': 1}},
+            { 'upsert': true},
+            function(err, user){
+
             }
-        })
+        )
+
+        app.get('/tutorial', function(req,res){
+            res.render('main.ejs',
+                {
+                    username : req.session.username,
+                    win: req.session.win,
+                    loss: req.session.loss
+                }
+            );
+        });
 
     });
 
     socket.on('end2', function(data){
         end2 = data.user2;
-        console.log('end2 : '+end2)
+        console.log('end2 : '+end2);
+
+        User.findOneAndUpdate(
+            { username: endname },
+            { '$inc': {'loss': 1}},
+            { 'upsert': true},
+            function(err, user){
+
+            }
+        )
+
+        app.get('/tutorial', function(req,res){
+
+            console.log(req.session.loss);
+            res.render('main.ejs',
+                {
+                    username : req.session.username,
+                    win: req.session.win,
+                    loss: req.session.loss
+                }
+            );
+        });
+
     });
 
     socket.on('andro', function(data){
